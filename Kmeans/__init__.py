@@ -58,6 +58,60 @@ def kmeanR1():
     print(f"Tiempo de ejecución en R1: {elapsed_time_r1} segundos")
 
 
+def kmeanR1K3(n):
+    start_time_r1 = time.time()
+
+    plt.style.use('dark_background')
+
+    # Make data
+
+    x1 = np.random.standard_normal(n) * 0.6 + np.ones(n)
+
+    x2 = np.random.standard_normal(n) * 0.5 - np.ones(n)
+
+    x3 = np.random.standard_normal(n) * 0.4 + np.ones(n) * 2.5
+
+    X = np.concatenate((x1, x2, x3), axis=0)
+
+    num_clusters = 3
+
+    # Inicializar los centroides de forma aleatoria
+    centroids = X[np.random.choice(len(X), num_clusters, replace=False)]
+
+    # Criterio de parada
+    max_iterations = 250
+    tolerance = 1e-4
+
+    # Inicializar array old_centroids que iniciara en 0
+
+    old_centroids = np.zeros_like(centroids)
+
+    for _ in range(max_iterations):
+
+        distances = np.abs(X[:, np.newaxis] - centroids)
+
+        clusters = np.argmin(distances, axis=1)
+
+        # Actualizar los centroides
+        old_centroids = centroids.copy()
+
+        for i in range(num_clusters):
+            centroids[i] = np.mean(X[clusters == i])
+
+            plt.plot(X, np.zeros_like(X), 'w.', markersize=8, label='dataPoints')
+            plt.plot(centroids, np.zeros_like(centroids), 'rx', markersize=17, label='Centroides')
+            plt.legend()
+            plt.show()
+
+            # Verificar la convergencia
+
+        if np.mean(np.abs(centroids - old_centroids)) <= tolerance:
+            break
+    end_time_r1 = time.time()
+    elapsed_time_r1 = end_time_r1 - start_time_r1
+    data_time = [n, elapsed_time_r1]
+    return data_time
+
 def kmeanR2():
     start_time_r2 = time.time()
     # Definimos variables
