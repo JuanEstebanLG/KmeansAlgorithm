@@ -1,10 +1,10 @@
-import time
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def kmeanR1():
-    start_time_r1 = time.time()
+ 
 
     plt.style.use('dark_background')
 
@@ -51,15 +51,14 @@ def kmeanR1():
             # Verificar la convergencia
 
         if np.mean(np.abs(centroids - old_centroids)) <= tolerance:
+            centro1 = centroids[0]
+            centro2 = centroids[1]
             break
-   'El siguiente espacio de codigo tiene como objetivo calcular el tiempo que demora el algoritmo'
-    end_time_r1 = time.time()
-    elapsed_time_r1 = end_time_r1 - start_time_r1
-    print(f"Tiempo de ejecución en R1: {elapsed_time_r1} segundos")
+
 
 
 def kmeanR1K3(n):
-    start_time_r1 = time.time()
+  
 
     plt.style.use('dark_background')
 
@@ -106,14 +105,14 @@ def kmeanR1K3(n):
             # Verificar la convergencia
 
         if np.mean(np.abs(centroids - old_centroids)) <= tolerance:
+            centro1 = centroids[0]
+            centro2 = centroids[1]
+            centro3 = centroids[2]
             break
-    end_time_r1 = time.time()
-    elapsed_time_r1 = end_time_r1 - start_time_r1
-    data_time = [n, elapsed_time_r1]
-    return data_time
+            
+
 
 def kmeanR2():
-    start_time_r2 = time.time()
     # Definimos variables
     plt.style.use('dark_background')
 
@@ -143,10 +142,9 @@ def kmeanR2():
             plt.show()
             # Verificar la convergencia
         if np.linalg.norm(centroids - old_centroids) < tolerance:
+            centro1 = centroids[0]
+            centro2 = centroids[1]
             break
-    'El siguiente espacio de codigo tiene como objetivo calcular el tiempo que demora el algoritmo'     
-    end_time_r2 = time.time()
-    elapsed_time_r2 = end_time_r2 - start_time_r2
-    print(f"Tiempo de ejecución en R2: {elapsed_time_r2} segundos")
+
 
 kmeanR2()
